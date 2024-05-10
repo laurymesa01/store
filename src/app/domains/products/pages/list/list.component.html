@@ -1,6 +1,5 @@
 <div class="grid grid-cols-3 gap-4">
-  <app-product [img]="img"></app-product>
-  <app-product [img]="img"></app-product>
-  <app-product [img]="img"></app-product>
-  <app-product [img]="img"></app-product>
+  @for (product of products(); track product) {
+    <app-product [product] = "product"></app-product>
+  }
 </div>

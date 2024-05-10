@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Product } from '../../../shared/models/product.model';
 
 @Component({
   selector: 'app-product',
@@ -9,6 +10,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductComponent {
 
-  @Input() img: string = '';
+  @Input() product!: Product;
 
 }
