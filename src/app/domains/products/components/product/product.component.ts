@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../../shared/models/product.model';
 
 @Component({
@@ -11,5 +11,12 @@ import { Product } from '../../../shared/models/product.model';
 export class ProductComponent {
 
   @Input() product!: Product;
+
+  @Output() addToCart = new EventEmitter();
+
+  addToCartHandler() {
+    console.log('click form child');
+    this.addToCart.emit(this.product);
+  }
 
 }

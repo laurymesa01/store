@@ -37,7 +37,8 @@
       </ul>
     </div>
     <div class="flex items-center">
-      <button class="px-4">
+      <button class="px-2 border rounde relative" (click)="toggleSideMenu()">
+        <div class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white">{{cart.length}}</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -56,3 +57,37 @@
     </div>
   </div>
 </nav>
+
+<div
+  class="fixed border-l-4 top-0 right-0 bg-red z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-white"
+  [class.translate-x-full]="hideSideMenu()">
+  <div class="flex justify-between items-center">
+    <p class="text-xl">My Cart</p>
+    <button (click)="toggleSideMenu()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div>
+  <div class="mt-12">
+    @for (product of cart; track $index) {
+      <div class="flex justify-between mt-4 items-center">
+        <img class="h-16 w-16 rounded-sm" [src]="product.image" alt="product.title">
+        <p class="text-lg">{{product.title}}</p>
+        <p class="font-bold">{{product.price | currency}}</p>
+      </div>
+    }
+    <p class="mt-12 text-gray-700 text-xl font-normal">Total: {{getTotalPrice() | currency}}</p>
+  </div>
+</div>
