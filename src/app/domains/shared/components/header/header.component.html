@@ -38,7 +38,7 @@
     </div>
     <div class="flex items-center">
       <button class="px-2 border rounde relative" (click)="toggleSideMenu()">
-        <div class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white">{{cart.length}}</div>
+        <div class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white">{{cart().length}}</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -81,13 +81,15 @@
     </button>
   </div>
   <div class="mt-12">
-    @for (product of cart; track $index) {
+    @for (product of cart(); track $index) {
       <div class="flex justify-between mt-4 items-center">
-        <img class="h-16 w-16 rounded-sm" [src]="product.image" alt="product.title">
-        <p class="text-lg">{{product.title}}</p>
+        <div class="flex space-x-2 items-center">
+          <img class="h-16 w-16 rounded-sm" [src]="product.images[0]" alt="product.title">
+          <p class="text-lg">{{product.title}}</p>
+        </div>
         <p class="font-bold">{{product.price | currency}}</p>
       </div>
     }
-    <p class="mt-12 text-gray-700 text-xl font-normal">Total: {{getTotalPrice() | currency}}</p>
+    <p class="mt-12 text-gray-700 text-xl font-normal">Total: {{total() | currency}}</p>
   </div>
 </div>

@@ -1,6 +1,7 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, inject, signal } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { CurrencyPipe } from "@angular/common";
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -9,18 +10,15 @@ import { CurrencyPipe } from "@angular/common";
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
-
-  @Input() cart: Product[] = [];
+export class HeaderComponent{
 
   hideSideMenu = signal<boolean>(true);
+  private cart_service = inject(CartService);
+  cart = this.cart_service.cart;
+  total = this.cart_service.total;
 
   toggleSideMenu(){
     this.hideSideMenu.update(prevState => !prevState);
-  }
-
-  getTotalPrice(){
-    return this.cart.reduce((total, product) => total + product.price, 0)
   }
 
 }
