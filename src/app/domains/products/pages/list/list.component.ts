@@ -1,10 +1,10 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
-import { ProductComponent } from "../../components/product/product.component";
-import { Product } from '../../../shared/models/product.model';
-import { HeaderComponent } from "../../../shared/components/header/header.component";
-import { CartService } from '../../../shared/services/cart.service';
-import { ProductService } from '../../../shared/services/product.service';
-import { error } from 'console';
+import { ProductComponent } from "@products/components/product/product.component";
+import { Product } from '@shared/models/product.model';
+import { HeaderComponent } from "@shared/components/header/header.component";
+import { CartService } from '@shared/services/cart.service';
+import { ProductService } from '@shared/services/product.service';
+
 @Component({
   selector: 'app-list',
   standalone: true,
