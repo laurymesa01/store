@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Product } from '@shared/models/product.model';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,15 @@ export class ProductService {
         }))
       )
     );
+  }
+
+  getProductById(id: string){
+    return this.http.get<Product>(`${this.url}/${id}`);
+    // .pipe(
+    //   map(product => {
+    //     product.images.map(image => this.cleanAndParseImageUrl(image))
+    //   })
+    // );
   }
 
   private cleanAndParseImageUrl(image: string): string {
