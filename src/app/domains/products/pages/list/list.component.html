@@ -1,6 +1,19 @@
-<div class="grid grid-cols-4 gap-8 mt-5">
+<div class="flex space-x-4 mt-5">
+  <div class="w-80">
+    <ul>
+      @for (category of categories(); track $index) {
+        <li>
+          <a href="">{{category.name | uppercase}}</a>
+        </li>
+      }
+
+    </ul>
+  </div>
+  <div class="grid grid-cols-4 gap-8 w-full">
     @for (product of products(); track product) {
       <app-product [product] = "product" (addToCart)="addToCart(product)"></app-product>
     }
+< /div>
 </div>
+
 
