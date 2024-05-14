@@ -1,9 +1,6 @@
-<section class="container mx-auto">
-  <app-header/>
-  <div class="grid grid-cols-4 gap-8 mt-5">
+<div class="grid grid-cols-4 gap-8 mt-5">
     @for (product of products(); track product) {
       <app-product [product] = "product" (addToCart)="addToCart(product)"></app-product>
     }
-  </div>
-</section>
+</div>
 
