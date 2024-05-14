@@ -13,6 +13,7 @@
                   class="object-cover object-center rounded border-2 cursor-pointer border-gray-200"
                   [src]="image"
                   (click)="changeCover(image)"
+                  [class.border-red-400]="image === cover()"
             />
           }
         </div>
@@ -30,7 +31,8 @@
     <p class="title-font font-medium text-2xl text-gray-900 mt-5">{{product()?.price | currency: '$': 'symbol': '1.0'}}</p>
     <button
       class="flex text-white mt-5 bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
-    >
+      (click)="addToCart()"
+      >
       Add To Cart
     </button>
   </div>
